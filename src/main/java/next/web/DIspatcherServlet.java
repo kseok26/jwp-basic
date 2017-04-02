@@ -7,13 +7,10 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * Created by young-seok on 2017. 4. 2..
@@ -33,7 +30,7 @@ public class DIspatcherServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
         String url;
         try {
-            url = mapping.getMappingUrl().get(req.getRequestURI()).excute(req, resp);
+            url = mapping.getController().get(req.getRequestURI()).excute(req, resp);
             moveUrl(url, req, resp);
         } catch (Exception e) {
             log.debug("mapping Error : {} ", e);
