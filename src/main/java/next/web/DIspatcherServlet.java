@@ -33,6 +33,7 @@ public class DIspatcherServlet extends HttpServlet {
             url = mapping.getController().get(req.getRequestURI()).excute(req, resp);
             moveUrl(url, req, resp);
         } catch (Exception e) {
+
             log.debug("mapping Error : {} ", e);
         }
     }
